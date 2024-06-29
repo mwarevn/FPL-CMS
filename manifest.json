@@ -1,0 +1,39 @@
+{
+    "manifest_version": 3,
+    "name": "Poly Tool Kit - mwarevn",
+    "description": "Bộ công cụ nhỏ giúp ích cho sinh viên FPoly học và tra cứu trực tuyến dễ dàng hơn.",
+    "background": {
+        "service_worker": "background.js",
+        "type": "module"
+    },
+    "content_scripts": [
+        {
+            "matches": ["*://*.poly.edu.vn/sinh-vien/lich-hoc*"],
+            "run_at": "document_end",
+            "js": ["injects/js/ap.poly.edu.vn.js"],
+            "css": ["injects/css/ap.poly.edu.vn.css"]
+        },
+        {
+            "matches": ["*://*.poly.edu.vn/ilias.php?ref_id=*"],
+            "run_at": "document_end",
+            "js": ["injects/js/lms.poly.edu.vn.js"]
+        }
+    ],
+    "version": "0.0.1",
+    "author": "mwarevn company",
+    "icons": {
+        "16": "assets/icon.png",
+        "48": "assets/icon.png",
+        "128": "assets/icon.png"
+    },
+    "host_permissions": ["*://*.poly.edu.vn/*"],
+    "permissions": [
+        "declarativeNetRequest",
+        "cookies",
+        "storage",
+        "tabs",
+        "notifications",
+        "system.display",
+        "scripting"
+    ]
+}
